@@ -2,7 +2,7 @@ package net.upliftinglemma.fate;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import net.upliftinglemma.fate.FateCharacter;
+import net.upliftinglemma.fate.Character;
 
-public interface CharacterRepository extends PagingAndSortingRepository<FateCharacter, Long> {}
+public interface CharacterRepository extends PagingAndSortingRepository<Character, Long> {}
 
