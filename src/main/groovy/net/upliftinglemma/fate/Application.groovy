@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 
 @SpringBootApplication
-public class Application {
+class Application {
 
-    public static void main(final String[] args) {
+    static main(args) {
         SpringApplication.run(Application.class, args);
     }
 
