@@ -10,6 +10,7 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'groovy'
     id 'eclipse'
 }
 
@@ -33,9 +34,10 @@ jar {
 }
 
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-data-rest"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile "com.h2database:h2"
+    compile 'org.codehaus.groovy:groovy-all'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'com.h2database:h2'
 }
 
 task wrapper(type: Wrapper) {
