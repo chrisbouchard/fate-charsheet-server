@@ -8,12 +8,12 @@ class Template {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id
+    Long id
 
-    private String name
+    String name
 
     @OneToMany
-    private Set<Character> character
+    Set<Character> character
 
 }
 

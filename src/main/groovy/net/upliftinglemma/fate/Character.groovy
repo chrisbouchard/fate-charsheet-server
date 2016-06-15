@@ -7,12 +7,12 @@ class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id
+    Long id
 
-    private String name
+    String name
 
     @ManyToOne
-    private Template template
+    Template template
 
 }
 
