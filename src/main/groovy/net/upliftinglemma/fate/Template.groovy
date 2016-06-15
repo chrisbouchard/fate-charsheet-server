@@ -1,7 +1,7 @@
-package net.upliftinglemma.fate;
+package net.upliftinglemma.fate
 
-import java.util.Set;
-import javax.persistence.*;
+import java.util.Set
+import javax.persistence.*
 
 @Entity
 class Template {

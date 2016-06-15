@@ -1,6 +1,6 @@
-package net.upliftinglemma.fate;
+package net.upliftinglemma.fate
 
-import javax.persistence.*;
+import javax.persistence.*
 
 @Entity
 class Character {
