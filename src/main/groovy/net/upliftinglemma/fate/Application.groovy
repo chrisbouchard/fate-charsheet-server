@@ -8,7 +8,7 @@ import org.springframework.boot.orm.jpa.EntityScan;
 class Application {
 
     static main(args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run Application.class, args
     }
 
 }
