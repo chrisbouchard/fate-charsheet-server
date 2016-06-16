@@ -11,8 +11,4 @@ class Character {
 
     String name
 
-    @ManyToOne
-    Template template
-
 }
-
