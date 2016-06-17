@@ -3,12 +3,17 @@ package net.upliftinglemma.fate
 import javax.persistence.*
 
 @Entity
-class Character {
+class Character implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = 1L
+
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id
+    @Id Integer id
 
     String name
+
+    @OneToMany(mappedBy = "characterId")
+    @OrderBy("index")
+    List<Aspect> aspects
 
 }
