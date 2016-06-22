@@ -9,11 +9,12 @@ import groovy.transform.EqualsAndHashCode
 
 @Embeddable
 @Canonical
-@EqualsAndHashCode(includes = ['type', 'name'])
-class Aspect implements Serializable {
+@EqualsAndHashCode(includes = ['name', 'rank'])
+class Skill implements Serializable {
 
     private static final long serialVersionUID = 1L
 
-    String type
     String name
+    Integer rank
+
 }

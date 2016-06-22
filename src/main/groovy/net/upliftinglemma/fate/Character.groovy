@@ -2,7 +2,10 @@ package net.upliftinglemma.fate
 
 import javax.persistence.*
 
+import groovy.transform.Canonical
+
 @Entity
+@Canonical
 class Character implements Serializable {
 
     private static final long serialVersionUID = 1L
@@ -12,8 +15,11 @@ class Character implements Serializable {
 
     String name
 
-    @OneToMany(mappedBy = "characterId")
-    @OrderBy("index")
+    @ElementCollection
+    @OrderColumn(name = 'index')
     List<Aspect> aspects
+
+    @ElementCollection
+    Set<Skill> skills
 
 }
