@@ -3,6 +3,7 @@
 .groovy/
 .project
 .settings/
+.springBeans
 bin/
 build/
 gradle.properties
