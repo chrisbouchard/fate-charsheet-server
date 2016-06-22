@@ -1,10 +1,12 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.4.0.M3')
     }
 }
 
@@ -16,7 +18,9 @@ plugins {
 apply plugin: 'spring-boot'
 
 repositories {
-    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
 }
 
 group = 'fate.upliftinglemma.net'
@@ -37,7 +41,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    compile "org.projectlombok:lombok:1.16.8"
+    compile 'org.projectlombok:lombok:1.16.8'
 }
 
 task wrapper(type: Wrapper) {
