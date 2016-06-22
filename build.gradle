@@ -1,8 +1,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url "http://repo.spring.io/snapshot" }
-        maven { url "http://repo.spring.io/milestone" }
+        maven { url "http://repo.spring.io/libs-milestone" }
     }
 
     dependencies {
@@ -19,8 +18,7 @@ apply plugin: 'spring-boot'
 
 repositories {
     jcenter()
-    maven { url "http://repo.spring.io/snapshot" }
-    maven { url "http://repo.spring.io/milestone" }
+    maven { url "http://repo.spring.io/libs-milestone" }
 }
 
 group = 'fate.upliftinglemma.net'
