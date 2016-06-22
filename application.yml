@@ -1,3 +1,7 @@
 spring:
   application:
     name: fate-charsheet-server
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true

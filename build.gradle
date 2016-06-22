@@ -11,6 +11,7 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'groovy'
+    id 'java'
 }
 
 apply plugin: 'spring-boot'
