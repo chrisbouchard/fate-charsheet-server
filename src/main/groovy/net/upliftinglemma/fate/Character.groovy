@@ -1,6 +1,8 @@
 package net.upliftinglemma.fate
 
 import javax.persistence.*
+import javax.validation.Valid
+import javax.validation.constraints.NotNull
 
 import groovy.transform.Canonical
 
@@ -13,13 +15,16 @@ class Character implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id Integer id
 
-    String name
+    @NotNull String name
 
+    @Valid
     @ElementCollection
     @OrderColumn(name = 'index')
     List<Aspect> aspects
 
+    @Valid
     @ElementCollection
-    Set<Skill> skills
+    @MapKeyColumn(name = 'name')
+    Map<String, Skill> skills
 
 }
