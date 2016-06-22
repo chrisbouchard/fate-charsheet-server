@@ -1,10 +1,17 @@
 package net.upliftinglemma.fate;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OrderColumn;
+import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -28,7 +35,7 @@ public class Character implements Serializable {
 
     @Valid
     @ElementCollection
-    @MapKeyColumn(name = "name")
-    private Map<String, Skill> skills;
+    @CollectionTable(uniqueConstraints=@UniqueConstraint(columnNames={"character_id", "name"}))
+    private Collection<Skill> skills;
 
 }
