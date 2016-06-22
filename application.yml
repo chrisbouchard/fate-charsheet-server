@@ -1,6 +1,8 @@
 spring:
   application:
     name: fate-charsheet-server
+  jackson:
+    serialization-inclusion: non-null
   jpa:
     hibernate:
       ddl-auto: create
