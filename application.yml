@@ -3,6 +3,11 @@ spring:
     name: fate-charsheet-server
   jackson:
     serialization-inclusion: non-null
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
 ---
 
 spring:
@@ -11,11 +16,4 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
----
 
-spring:
-  profiles: production
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: false
