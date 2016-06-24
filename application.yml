@@ -2,7 +2,7 @@ spring:
   application:
     name: fate-charsheet-server
   jackson:
-    serialization-inclusion: non-null
+    default-property-inclusion: NON_NULL
   jpa:
     hibernate:
       ddl-auto: validate
@@ -12,6 +12,8 @@ server:
 
 ---
 
+flyway:
+  enabled: false
 spring:
   profiles: development
   jpa:
@@ -20,4 +22,3 @@ spring:
     show-sql: true
 server:
   port: 8080
-
