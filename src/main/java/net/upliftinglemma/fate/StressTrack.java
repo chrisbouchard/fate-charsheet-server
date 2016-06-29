@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
+
 @Embeddable
 @Data
-class Skill implements Serializable {
+public class StressTrack implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Basic(optional = false)
     @NotNull private String name;
-
-    @Min(1L) private int rank;
+    
+    private int max;
 
 }

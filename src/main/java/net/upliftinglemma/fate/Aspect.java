@@ -7,11 +7,9 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Embeddable
 @Data
-@EqualsAndHashCode(of = {"type", "name"})
 public class Aspect implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -38,4 +38,9 @@ public class Character implements Serializable {
     @CollectionTable(uniqueConstraints=@UniqueConstraint(columnNames={"character_id", "name"}))
     private Collection<Skill> skills;
 
+    @Valid
+    @ElementCollection
+    @OrderColumn(name = "index")
+    private List<StressTrack> stressTracks;
+
 }
