@@ -4,14 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OrderColumn;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -23,7 +16,8 @@ public class Character implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "character_seq", sequenceName = "character_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "character_seq")
     @Id private Integer id;
 
     @NotNull private String name;

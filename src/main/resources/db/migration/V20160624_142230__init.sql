@@ -1,4 +1,4 @@
-CREATE TABLE CHARACTER (
+CREATE TABLE character (
     id SERIAL,
     name TEXT NOT NULL,
 
@@ -27,6 +27,19 @@ CREATE TABLE character_skills (
     CONSTRAINT pk__character_skills
         PRIMARY KEY (character_id, name),
     CONSTRAINT fk__character_skills__character__character_id
+        FOREIGN KEY (character_id) REFERENCES character
+        ON DELETE CASCADE
+);
+
+CREATE TABLE character_stress_tracks (
+    character_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    max INTEGER NOT NULL,
+    index INTEGER NOT NULL,
+
+    CONSTRAINT pk__character_stress_tracks
+        PRIMARY KEY (character_id, index),
+    CONSTRAINT fk__character_stress_tracks__character__character_id
         FOREIGN KEY (character_id) REFERENCES character
         ON DELETE CASCADE
 );
