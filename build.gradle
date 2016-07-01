@@ -1,3 +1,5 @@
+import java.util.jar.JarEntry;
+
 buildscript {
     repositories {
         jcenter()
@@ -5,7 +7,8 @@ buildscript {
     }
 
     dependencies {
-        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.4.0.M3')
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.M3'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
@@ -14,6 +17,7 @@ plugins {
     id 'java'
 }
 
+apply plugin: 'docker'
 apply plugin: 'spring-boot'
 
 repositories {
@@ -26,6 +30,10 @@ version = '0.1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+docker {
+    maintainer 'Chris Bouchard "chris@upliftinglemma.net"'
+}
 
 jar {
     manifest {
@@ -40,8 +48,22 @@ dependencies {
 
     runtime 'com.h2database:h2'
     runtime 'org.flywaydb:flyway-core'
+    runtime 'org.postgresql:postgresql'
 
     compile 'org.projectlombok:lombok:1.16.8'
+}
+
+task buildDocker(type: Docker, dependsOn: build, group: 'application') {
+    description = 'Build a docker image of this project'
+    applicationName = jar.baseName
+    entryPoint = ['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar']
+
+    baseImage 'frolvlad/alpine-oraclejdk8:slim'
+    volume '/tmp'
+    exposePort 8080
+    addFile files(jar).singleFile, '/app.jar'
+
+    runCommand "sh -c 'touch /app.jar'"
 }
 
 task wrapper(type: Wrapper) {

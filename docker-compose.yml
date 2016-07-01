@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  web:
+    image: fate.upliftinglemma.net/fate-charsheet-server:0.1.0
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  nginx:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro

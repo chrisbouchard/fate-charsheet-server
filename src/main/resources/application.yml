@@ -12,13 +12,28 @@ server:
 
 ---
 
-flyway:
-  enabled: false
+spring:
+  profiles: docker
+  datasource:
+    url: jdbc:postgresql://db/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+server:
+  port: 8080
+
+---
+
 spring:
   profiles: development
   jpa:
     hibernate:
       ddl-auto: create
     show-sql: true
+flyway:
+  enabled: false
 server:
   port: 8080
