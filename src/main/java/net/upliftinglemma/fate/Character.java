@@ -25,16 +25,16 @@ public class Character implements Serializable {
     @NotNull private String name;
 
     @Valid
-    @OneToMany(mappedBy = "character")
+    @OneToMany(mappedBy = "character", orphanRemoval = true)
     @OrderColumn(name = "index")
     private List<Aspect> aspects;
 
     @Valid
-    @OneToMany(mappedBy = "character")
+    @OneToMany(mappedBy = "character", orphanRemoval = true)
     private Set<Skill> skills;
 
     @Valid
-    @OneToMany(mappedBy = "character")
+    @OneToMany(mappedBy = "character", orphanRemoval = true)
     @OrderColumn(name = "index")
     private List<StressTrack> stressTracks;
 
