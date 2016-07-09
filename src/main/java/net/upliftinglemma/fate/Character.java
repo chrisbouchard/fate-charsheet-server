@@ -33,8 +33,9 @@ public class Character implements Serializable {
     private Collection<Skill> skills;
 
     @Valid
-    @ElementCollection
+    @OneToMany(mappedBy = "character")
     @OrderColumn(name = "index")
     private List<StressTrack> stressTracks;
 
 }
+
