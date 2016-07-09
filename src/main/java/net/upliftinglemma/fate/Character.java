@@ -25,7 +25,7 @@ public class Character implements Serializable {
     @NotNull private String name;
 
     @Valid
-    @OneToMany
+    @OneToMany(mappedBy = "character")
     @OrderColumn(name = "index")
     private List<Aspect> aspects;
 
