@@ -31,7 +31,12 @@ version = '0.1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+bootRun {
+    addResources = true
+}
+
 docker {
+    baseImage 'java:8-jdk'
     maintainer 'Chris Bouchard "chris@upliftinglemma.net"'
 }
 
@@ -43,6 +48,7 @@ jar {
 }
 
 dependencies {
+    compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 
@@ -53,17 +59,31 @@ dependencies {
     compile 'org.projectlombok:lombok:1.16.8'
 }
 
-task buildDocker(type: Docker, dependsOn: build, group: 'application') {
-    description = 'Build a docker image of this project'
+task buildDevDocker(type: Docker, dependsOn: build, group: 'application') {
+    description = 'Build a developent docker image of this project'
+
+    applicationName = jar.baseName
+    tagVersion = 'dev'
+    entryPoint = ['./gradlew', '-Djava.security.egd=file:/dev/./urandom', 'bootRun']
+
+    volume '/tmp'
+    volume '/opt/app'
+    workingDir '/opt/app'
+    exposePort 8080
+}
+
+task buildProdDocker(type: Docker, dependsOn: build, group: 'application') {
+    description = 'Build a production docker image of this project'
+
     applicationName = jar.baseName
     entryPoint = ['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar']
 
-    baseImage 'frolvlad/alpine-oraclejdk8:slim'
     volume '/tmp'
+    addFile files(jar).singleFile, '/opt/app/app.jar'
+    workingDir '/opt/app'
     exposePort 8080
-    addFile files(jar).singleFile, '/app.jar'
 
-    runCommand "sh -c 'touch /app.jar'"
+    runCommand '/usr/bin/touch /opt/app/app.jar'
 }
 
 task wrapper(type: Wrapper) {

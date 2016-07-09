@@ -2,12 +2,14 @@ version: "2"
 
 services:
   web:
-    image: fate.upliftinglemma.net/fate-charsheet-server:0.1.0
+    image: fate.upliftinglemma.net/fate-charsheet-server:dev
     depends_on:
       - db
       - nginx
     links:
       - db
+    volumes:
+      - .:/opt/app:Z
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - VIRTUAL_HOST=~fate.upliftinglemma.net,fate\.upliftinglemma\..*\.xip\.io
