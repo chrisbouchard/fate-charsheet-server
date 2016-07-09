@@ -1,17 +1,19 @@
 package net.upliftinglemma.fate;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"id"})
 public class Character implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,14 +25,13 @@ public class Character implements Serializable {
     @NotNull private String name;
 
     @Valid
-    @ElementCollection
+    @OneToMany
     @OrderColumn(name = "index")
     private List<Aspect> aspects;
 
     @Valid
-    @ElementCollection
-    @CollectionTable(uniqueConstraints=@UniqueConstraint(columnNames={"character_id", "name"}))
-    private Collection<Skill> skills;
+    @OneToMany(mappedBy = "character")
+    private Set<Skill> skills;
 
     @Valid
     @OneToMany(mappedBy = "character")
