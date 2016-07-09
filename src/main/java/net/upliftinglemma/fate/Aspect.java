@@ -31,3 +31,4 @@ public class Aspect implements Serializable {
     private Character character;
 
 }
+

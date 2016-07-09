@@ -31,3 +31,4 @@ public class Skill implements Serializable {
     private Character character;
 
 }
+
